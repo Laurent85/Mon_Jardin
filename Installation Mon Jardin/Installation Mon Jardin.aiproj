@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>abc127f6-f30e-46d0-a60f-9e45253cd33a</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Installation Mon Jardin.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>Installation Mon Jardin</AssemblyName>
+    <Name>Installation Mon Jardin</Name>
+    <RootNamespace>Installation Mon Jardin</RootNamespace>
+    <AiComPath>C:\Program Files (x86)\Caphyon\Advanced Installer 11.7\bin\x86\AdvancedInstaller.com</AiComPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'All' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>msi\</OutputPath>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="Installation Mon Jardin.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mon jardin\Mon jardin.vbproj">
+      <Name>Mon jardin</Name>
+      <Project>{314bc7e3-7eae-41a6-89c2-990535ed75ff}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets" Condition="'$(AdvancedInstallerMSBuildTargets)' == ''" />
+</Project>
