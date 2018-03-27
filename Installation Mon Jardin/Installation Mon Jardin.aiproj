@@ -16,11 +16,6 @@
     <RootNamespace>Installation Mon Jardin</RootNamespace>
     <AiComPath>C:\Program Files (x86)\Caphyon\Advanced Installer 11.7\bin\x86\AdvancedInstaller.com</AiComPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'All' ">
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>msi\</OutputPath>
-    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
   <ItemGroup>
     <Compile Include="Installation Mon Jardin.aip">
