@@ -1,10 +1,4 @@
-﻿Imports System.Data
-Imports System.Data.Common
-Imports System.Data.OleDb
-Imports System.IO
-Imports System.DateTime
-Imports FluentDate
-Imports System.Globalization
+﻿Imports System.IO
 
 Public Class Form1
 
@@ -14,7 +8,7 @@ Public Class Form1
         ToolStripButton1.Enabled = True
         BindingNavigatorDeleteItem.Enabled = True
 
-        Dim resultIndex As Integer = -1
+        Dim resultIndex As Integer
         resultIndex = Liste.FindStringExact(NomTextBox.Text)
         If resultIndex > -1 Then
             ' Found text, do something here
@@ -29,14 +23,18 @@ Public Class Form1
         Dim t As Integer = 0
         If BindingNavigatorAddNewItem.Enabled = False Then
             For Each dr As DataRow In JardinDataSet.Légumes
-                If dr.Item("Nom").ToString = (NomTextBox.Text) Then
+                If (dr("Nom").ToString = (NomTextBox.Text.ToString)) And t < 1 Then
                     FicheRichTextBox.Text = dr.Item("fiche").ToString
                     r = JardinDataSet.Légumes.Rows.IndexOf(dr)
                     t = 1
                 End If
                 s = s + 1
-            Next
+            Next dr
         End If
+        Dim bytBLOBData() As Byte =
+               JardinDataSet.Légumes.Rows(r).Item("Photo")
+        Dim stmBLOBData As New MemoryStream(bytBLOBData)
+        PhotoPictureBox.Image = Image.FromStream(stmBLOBData)
 
         NomTextBox.Visible = False
         Liste.Visible = False
@@ -45,28 +43,28 @@ Public Class Form1
         Annuler.Visible = False
         Supprimer.Visible = False
 
-        Me.Validate()
-        Me.LégumesBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.JardinDataSet)
-        Me.LégumesTableAdapter.Fill(Me.JardinDataSet.Légumes)
+        Validate()
+        LégumesBindingSource.EndEdit()
+        TableAdapterManager.UpdateAll(JardinDataSet)
+        LégumesTableAdapter.Fill(JardinDataSet.Légumes)
 
         If t > 0 And BindingNavigatorAddNewItem.Enabled = False Then
-            JardinDataSet.Légumes.Rows(s).Item("Photo") = JardinDataSet.Légumes.Rows(r).Item("Photo")
+            'JardinDataSet.Légumes.Rows(s).Item("Photo") = JardinDataSet.Légumes.Rows(r).Item(2)
+
         End If
 
-        Me.Validate()
-        Me.LégumesBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.JardinDataSet)
-        Me.LégumesTableAdapter.Fill(Me.JardinDataSet.Légumes)
+        Validate()
+        LégumesBindingSource.EndEdit()
+        TableAdapterManager.UpdateAll(JardinDataSet)
+        LégumesTableAdapter.Fill(JardinDataSet.Légumes)
         BindingNavigatorAddNewItem.Enabled = True
 
         tri_année()
     End Sub
 
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: cette ligne de code charge les données dans la table 'JardinDataSet.Légumes'. Vous pouvez la déplacer ou la supprimer selon vos besoins.
-        Année.SelectedIndex = 2
+        Année.SelectedItem = Date.Today.Year.ToString
         tri_année()
         NomTextBox.Visible = False
         Liste.Visible = False
@@ -79,22 +77,22 @@ Public Class Form1
 
     Sub tri_année()
         If Année.SelectedItem = 2015 Then
-            Me.LégumesTableAdapter.Fill_2015(Me.JardinDataSet.Légumes)
+            LégumesTableAdapter.Fill_2015(JardinDataSet.Légumes)
         End If
         If Année.SelectedItem = 2016 Then
-            Me.LégumesTableAdapter.Fill_2016(Me.JardinDataSet.Légumes)
+            LégumesTableAdapter.Fill_2016(JardinDataSet.Légumes)
         End If
         If Année.SelectedItem = 2017 Then
-            Me.LégumesTableAdapter.Fill_2017(Me.JardinDataSet.Légumes)
+            LégumesTableAdapter.Fill_2017(JardinDataSet.Légumes)
         End If
         If Année.SelectedItem = 2018 Then
-            Me.LégumesTableAdapter.Fill_2018(Me.JardinDataSet.Légumes)
+            LégumesTableAdapter.Fill_2018(JardinDataSet.Légumes)
         End If
         If Année.SelectedItem = 2019 Then
-            Me.LégumesTableAdapter.Fill_2019(Me.JardinDataSet.Légumes)
+            LégumesTableAdapter.Fill_2019(JardinDataSet.Légumes)
         End If
         If Année.SelectedItem = 2020 Then
-            Me.LégumesTableAdapter.Fill_2020(Me.JardinDataSet.Légumes)
+            LégumesTableAdapter.Fill_2020(JardinDataSet.Légumes)
         End If
     End Sub
 
@@ -126,23 +124,28 @@ Public Class Form1
         Liste.Select()
         QuantitéNumericUpDown.Value = 0
         JardinDataSet.Légumes.Columns.Item(9).DefaultValue = Année.SelectedItem
-        Me.LégumesTableAdapter.Fill(Me.JardinDataSet.Légumes)
+        LégumesTableAdapter.Fill(JardinDataSet.Légumes)
 
         BindingNavigatorAddNewItem.Enabled = False
         LégumesBindingNavigatorSaveItem.Enabled = True
         ToolStripButton1.Enabled = True
         BindingNavigatorDeleteItem.Enabled = False
 
+        Dim r As Integer = 0
+        Dim s As Integer = 0
+        Dim t As Integer = 0
+
+
 
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
-        Dim OpenFileDialog1 As New OpenFileDialog
-        With OpenFileDialog1
+        Dim openFileDialog1 As New OpenFileDialog
+        With openFileDialog1
 
             .CheckFileExists = True
             .ShowReadOnly = False
-            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
+            .Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg;*.png"
             .FilterIndex = 2
 
             If .ShowDialog = DialogResult.OK Then
