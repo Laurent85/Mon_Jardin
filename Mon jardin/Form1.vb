@@ -11,9 +11,7 @@ Public Class Form1
         Dim resultIndex As Integer
         resultIndex = Liste.FindStringExact(NomTextBox.Text)
         If resultIndex > -1 Then
-            ' Found text, do something here
         Else
-            ' Did not find text, do something here
             Liste.Items.Add(NomTextBox.Text)
             Liste.Sorted = True
         End If
@@ -28,30 +26,22 @@ Public Class Form1
                     r = JardinDataSet.Légumes.Rows.IndexOf(dr)
                     t = 1
                 End If
-                s = s + 1
             Next dr
         End If
-        Dim bytBLOBData() As Byte =
-               JardinDataSet.Légumes.Rows(r).Item("Photo")
-        Dim stmBLOBData As New MemoryStream(bytBLOBData)
-        PhotoPictureBox.Image = Image.FromStream(stmBLOBData)
 
-        NomTextBox.Visible = False
+        If t > 0 And BindingNavigatorAddNewItem.Enabled = False Then
+            Dim photo() As Byte = JardinDataSet.Légumes.Rows(r).Item("Photo")
+            Dim copiePhoto As New MemoryStream(photo)
+            PhotoPictureBox.Image = Image.FromStream(copiePhoto)
+
+            NomTextBox.Visible = False
+        End If
+
         Liste.Visible = False
         Label2.Visible = False
         ComboBox1.Visible = True
         Annuler.Visible = False
         Supprimer.Visible = False
-
-        Validate()
-        LégumesBindingSource.EndEdit()
-        TableAdapterManager.UpdateAll(JardinDataSet)
-        LégumesTableAdapter.Fill(JardinDataSet.Légumes)
-
-        If t > 0 And BindingNavigatorAddNewItem.Enabled = False Then
-            'JardinDataSet.Légumes.Rows(s).Item("Photo") = JardinDataSet.Légumes.Rows(r).Item(2)
-
-        End If
 
         Validate()
         LégumesBindingSource.EndEdit()
@@ -120,7 +110,6 @@ Public Class Form1
         Annuler.Visible = True
         Modifier.Visible = False
         Supprimer.Visible = True
-        'NomTextBox.Select()
         Liste.Select()
         QuantitéNumericUpDown.Value = 0
         JardinDataSet.Légumes.Columns.Item(9).DefaultValue = Année.SelectedItem
@@ -130,12 +119,6 @@ Public Class Form1
         LégumesBindingNavigatorSaveItem.Enabled = True
         ToolStripButton1.Enabled = True
         BindingNavigatorDeleteItem.Enabled = False
-
-        Dim r As Integer = 0
-        Dim s As Integer = 0
-        Dim t As Integer = 0
-
-
 
     End Sub
 
@@ -162,7 +145,6 @@ Public Class Form1
         Liste.Visible = True
         Label2.Visible = True
         ComboBox1.Visible = False
-        'NomTextBox.Select()
         Liste.Select()
         Annuler.Visible = True
     End Sub

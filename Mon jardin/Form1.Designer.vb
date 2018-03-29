@@ -359,7 +359,7 @@ Partial Class Form1
         'QuantitéNumericUpDown
         '
         Me.QuantitéNumericUpDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.QuantitéNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.LégumesBindingSource, "Quantité", True))
+        Me.QuantitéNumericUpDown.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.LégumesBindingSource, "Quantité", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N0"))
         Me.QuantitéNumericUpDown.Location = New System.Drawing.Point(128, 277)
         Me.QuantitéNumericUpDown.Maximum = New Decimal(New Integer() {900, 0, 0, 0})
         Me.QuantitéNumericUpDown.Name = "QuantitéNumericUpDown"
