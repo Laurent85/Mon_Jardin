@@ -16,21 +16,20 @@ Public Class Form1
             Liste.Sorted = True
         End If
 
-        Dim r As Integer = 0
-        Dim s As Integer = 0
-        Dim t As Integer = 0
+        Dim numéroLigne As Integer = 0
+        Dim flag As Integer = 0
         If BindingNavigatorAddNewItem.Enabled = False Then
             For Each dr As DataRow In JardinDataSet.Légumes
-                If (dr("Nom").ToString = (NomTextBox.Text.ToString)) And t < 1 Then
+                If (dr("Nom").ToString = (NomTextBox.Text.ToString)) And flag < 1 Then
                     FicheRichTextBox.Text = dr.Item("fiche").ToString
-                    r = JardinDataSet.Légumes.Rows.IndexOf(dr)
-                    t = 1
+                    numéroLigne = JardinDataSet.Légumes.Rows.IndexOf(dr)
+                    flag = 1
                 End If
             Next dr
         End If
 
-        If t > 0 And BindingNavigatorAddNewItem.Enabled = False Then
-            Dim photo() As Byte = JardinDataSet.Légumes.Rows(r).Item("Photo")
+        If flag > 0 And BindingNavigatorAddNewItem.Enabled = False Then
+            Dim photo() As Byte = JardinDataSet.Légumes.Rows(numéroLigne).Item("Photo")
             Dim copiePhoto As New MemoryStream(photo)
             PhotoPictureBox.Image = Image.FromStream(copiePhoto)
 
