@@ -35,9 +35,9 @@ Partial Class Form1
         Me.LégumesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.JardinDataSet = New Mon_jardin.JardinDataSet()
         Me.LégumesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.BtnAjouterLégume = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
+        Me.BtnSupprimerLégume = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
@@ -46,8 +46,8 @@ Partial Class Form1
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.LégumesBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.BtnPhoto = New System.Windows.Forms.ToolStripButton()
+        Me.BtnEnregistrerLégume = New System.Windows.Forms.ToolStripButton()
         Me.IdTextBox = New System.Windows.Forms.TextBox()
         Me.NomTextBox = New System.Windows.Forms.TextBox()
         Me.PhotoPictureBox = New System.Windows.Forms.PictureBox()
@@ -56,12 +56,12 @@ Partial Class Form1
         Me.Date_repiquageDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.QuantitéNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Date_récolteDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CmbChoixLégume = New System.Windows.Forms.ComboBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Modifier = New System.Windows.Forms.Button()
+        Me.LblNomLégume = New System.Windows.Forms.Label()
+        Me.BtnModifier = New System.Windows.Forms.Button()
         Me.ObservationsRichTextBox = New System.Windows.Forms.RichTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
@@ -69,9 +69,9 @@ Partial Class Form1
         Me.TableAdapterManager = New Mon_jardin.JardinDataSetTableAdapters.TableAdapterManager()
         Me.Année = New System.Windows.Forms.ComboBox()
         Me.AnnéeComboBox = New System.Windows.Forms.ComboBox()
-        Me.Liste = New System.Windows.Forms.ComboBox()
-        Me.Annuler = New System.Windows.Forms.Button()
-        Me.Supprimer = New System.Windows.Forms.Button()
+        Me.CmbListe = New System.Windows.Forms.ComboBox()
+        Me.BtnAnnulerAjout = New System.Windows.Forms.Button()
+        Me.BtnSupprimerLégumeListe = New System.Windows.Forms.Button()
         Me.Bilan = New System.Windows.Forms.Button()
         IdLabel = New System.Windows.Forms.Label()
         Date_semisLabel = New System.Windows.Forms.Label()
@@ -181,11 +181,11 @@ Partial Class Form1
         '
         'LégumesBindingNavigator
         '
-        Me.LégumesBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.LégumesBindingNavigator.AddNewItem = Me.BtnAjouterLégume
         Me.LégumesBindingNavigator.BindingSource = Me.LégumesBindingSource
         Me.LégumesBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.LégumesBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.LégumesBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ToolStripButton1, Me.LégumesBindingNavigatorSaveItem})
+        Me.LégumesBindingNavigator.DeleteItem = Me.BtnSupprimerLégume
+        Me.LégumesBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BtnAjouterLégume, Me.BtnSupprimerLégume, Me.BtnPhoto, Me.BtnEnregistrerLégume})
         Me.LégumesBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.LégumesBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.LégumesBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
@@ -197,14 +197,14 @@ Partial Class Form1
         Me.LégumesBindingNavigator.TabIndex = 0
         Me.LégumesBindingNavigator.Text = "BindingNavigator1"
         '
-        'BindingNavigatorAddNewItem
+        'BtnAjouterLégume
         '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Ajouter nouveau"
+        Me.BtnAjouterLégume.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnAjouterLégume.Image = CType(resources.GetObject("BtnAjouterLégume.Image"), System.Drawing.Image)
+        Me.BtnAjouterLégume.Name = "BtnAjouterLégume"
+        Me.BtnAjouterLégume.RightToLeftAutoMirrorImage = True
+        Me.BtnAjouterLégume.Size = New System.Drawing.Size(23, 22)
+        Me.BtnAjouterLégume.Text = "Ajouter nouveau"
         '
         'BindingNavigatorCountItem
         '
@@ -213,14 +213,14 @@ Partial Class Form1
         Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Nombre total d'éléments"
         '
-        'BindingNavigatorDeleteItem
+        'BtnSupprimerLégume
         '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Supprimer"
+        Me.BtnSupprimerLégume.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnSupprimerLégume.Image = CType(resources.GetObject("BtnSupprimerLégume.Image"), System.Drawing.Image)
+        Me.BtnSupprimerLégume.Name = "BtnSupprimerLégume"
+        Me.BtnSupprimerLégume.RightToLeftAutoMirrorImage = True
+        Me.BtnSupprimerLégume.Size = New System.Drawing.Size(23, 22)
+        Me.BtnSupprimerLégume.Text = "Supprimer"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -283,22 +283,22 @@ Partial Class Form1
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripButton1
+        'BtnPhoto
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.BtnPhoto.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnPhoto.Image = CType(resources.GetObject("BtnPhoto.Image"), System.Drawing.Image)
+        Me.BtnPhoto.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnPhoto.Name = "BtnPhoto"
+        Me.BtnPhoto.Size = New System.Drawing.Size(23, 22)
+        Me.BtnPhoto.Text = "ToolStripButton1"
         '
-        'LégumesBindingNavigatorSaveItem
+        'BtnEnregistrerLégume
         '
-        Me.LégumesBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.LégumesBindingNavigatorSaveItem.Image = CType(resources.GetObject("LégumesBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.LégumesBindingNavigatorSaveItem.Name = "LégumesBindingNavigatorSaveItem"
-        Me.LégumesBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.LégumesBindingNavigatorSaveItem.Text = "Enregistrer les données"
+        Me.BtnEnregistrerLégume.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnEnregistrerLégume.Image = CType(resources.GetObject("BtnEnregistrerLégume.Image"), System.Drawing.Image)
+        Me.BtnEnregistrerLégume.Name = "BtnEnregistrerLégume"
+        Me.BtnEnregistrerLégume.Size = New System.Drawing.Size(23, 22)
+        Me.BtnEnregistrerLégume.Text = "Enregistrer les données"
         '
         'IdTextBox
         '
@@ -376,17 +376,17 @@ Partial Class Form1
         Me.Date_récolteDateTimePicker.Size = New System.Drawing.Size(200, 20)
         Me.Date_récolteDateTimePicker.TabIndex = 16
         '
-        'ComboBox1
+        'CmbChoixLégume
         '
-        Me.ComboBox1.BackColor = System.Drawing.Color.AliceBlue
-        Me.ComboBox1.DataSource = Me.LégumesBindingSource
-        Me.ComboBox1.DisplayMember = "Nom"
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(64, 55)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(155, 21)
-        Me.ComboBox1.TabIndex = 18
-        Me.ComboBox1.ValueMember = "Id"
+        Me.CmbChoixLégume.BackColor = System.Drawing.Color.AliceBlue
+        Me.CmbChoixLégume.DataSource = Me.LégumesBindingSource
+        Me.CmbChoixLégume.DisplayMember = "Nom"
+        Me.CmbChoixLégume.FormattingEnabled = True
+        Me.CmbChoixLégume.Location = New System.Drawing.Point(64, 55)
+        Me.CmbChoixLégume.Name = "CmbChoixLégume"
+        Me.CmbChoixLégume.Size = New System.Drawing.Size(155, 21)
+        Me.CmbChoixLégume.TabIndex = 18
+        Me.CmbChoixLégume.ValueMember = "Id"
         '
         'TextBox1
         '
@@ -418,24 +418,24 @@ Partial Class Form1
         Me.TextBox3.TabIndex = 22
         Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label2
+        'LblNomLégume
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(166, 97)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(123, 13)
-        Me.Label2.TabIndex = 23
-        Me.Label2.Text = "Entrez le nom du légume"
+        Me.LblNomLégume.AutoSize = True
+        Me.LblNomLégume.ForeColor = System.Drawing.Color.Red
+        Me.LblNomLégume.Location = New System.Drawing.Point(166, 97)
+        Me.LblNomLégume.Name = "LblNomLégume"
+        Me.LblNomLégume.Size = New System.Drawing.Size(123, 13)
+        Me.LblNomLégume.TabIndex = 23
+        Me.LblNomLégume.Text = "Entrez le nom du légume"
         '
-        'Modifier
+        'BtnModifier
         '
-        Me.Modifier.Location = New System.Drawing.Point(235, 52)
-        Me.Modifier.Name = "Modifier"
-        Me.Modifier.Size = New System.Drawing.Size(93, 24)
-        Me.Modifier.TabIndex = 24
-        Me.Modifier.Text = "Modifier le nom"
-        Me.Modifier.UseVisualStyleBackColor = True
+        Me.BtnModifier.Location = New System.Drawing.Point(235, 52)
+        Me.BtnModifier.Name = "BtnModifier"
+        Me.BtnModifier.Size = New System.Drawing.Size(93, 24)
+        Me.BtnModifier.TabIndex = 24
+        Me.BtnModifier.Text = "Modifier le nom"
+        Me.BtnModifier.UseVisualStyleBackColor = True
         '
         'ObservationsRichTextBox
         '
@@ -502,33 +502,33 @@ Partial Class Form1
         Me.AnnéeComboBox.Size = New System.Drawing.Size(67, 21)
         Me.AnnéeComboBox.TabIndex = 30
         '
-        'Liste
+        'CmbListe
         '
-        Me.Liste.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Liste.FormattingEnabled = True
-        Me.Liste.Items.AddRange(New Object() {"Ail", "Basilic", "Betterave", "Brocoli", "Carotte", "Celeri", "Chou Fleur", "Ciboulette", "Concombre", "Courgette", "Echalotte", "Epinard", "Estragon", "Fraise", "Haricot Blanc", "Laitue", "Mache", "Melon", "Navet", "Oignon", "Patate", "Persil", "Petit Pois", "Poireau", "Poivron", "Radis", "Tomate", "Tomate cerise"})
-        Me.Liste.Location = New System.Drawing.Point(128, 113)
-        Me.Liste.Name = "Liste"
-        Me.Liste.Size = New System.Drawing.Size(200, 21)
-        Me.Liste.TabIndex = 31
+        Me.CmbListe.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.CmbListe.FormattingEnabled = True
+        Me.CmbListe.Items.AddRange(New Object() {"Ail", "Basilic", "Betterave", "Brocoli", "Carotte", "Celeri", "Chou Fleur", "Ciboulette", "Concombre", "Courgette", "Echalotte", "Epinard", "Estragon", "Fraise", "Haricot Blanc", "Laitue", "Mache", "Melon", "Navet", "Oignon", "Patate", "Persil", "Petit Pois", "Poireau", "Poivron", "Radis", "Tomate", "Tomate cerise"})
+        Me.CmbListe.Location = New System.Drawing.Point(128, 113)
+        Me.CmbListe.Name = "CmbListe"
+        Me.CmbListe.Size = New System.Drawing.Size(200, 21)
+        Me.CmbListe.TabIndex = 31
         '
-        'Annuler
+        'BtnAnnulerAjout
         '
-        Me.Annuler.Location = New System.Drawing.Point(42, 111)
-        Me.Annuler.Name = "Annuler"
-        Me.Annuler.Size = New System.Drawing.Size(75, 23)
-        Me.Annuler.TabIndex = 32
-        Me.Annuler.Text = "Annuler"
-        Me.Annuler.UseVisualStyleBackColor = True
+        Me.BtnAnnulerAjout.Location = New System.Drawing.Point(42, 111)
+        Me.BtnAnnulerAjout.Name = "BtnAnnulerAjout"
+        Me.BtnAnnulerAjout.Size = New System.Drawing.Size(75, 23)
+        Me.BtnAnnulerAjout.TabIndex = 32
+        Me.BtnAnnulerAjout.Text = "Annuler"
+        Me.BtnAnnulerAjout.UseVisualStyleBackColor = True
         '
-        'Supprimer
+        'BtnSupprimerLégumeListe
         '
-        Me.Supprimer.Location = New System.Drawing.Point(139, 71)
-        Me.Supprimer.Name = "Supprimer"
-        Me.Supprimer.Size = New System.Drawing.Size(174, 23)
-        Me.Supprimer.TabIndex = 33
-        Me.Supprimer.Text = "Supprimer ce légume de la liste"
-        Me.Supprimer.UseVisualStyleBackColor = True
+        Me.BtnSupprimerLégumeListe.Location = New System.Drawing.Point(139, 71)
+        Me.BtnSupprimerLégumeListe.Name = "BtnSupprimerLégumeListe"
+        Me.BtnSupprimerLégumeListe.Size = New System.Drawing.Size(174, 23)
+        Me.BtnSupprimerLégumeListe.TabIndex = 33
+        Me.BtnSupprimerLégumeListe.Text = "Supprimer ce légume de la liste"
+        Me.BtnSupprimerLégumeListe.UseVisualStyleBackColor = True
         '
         'Bilan
         '
@@ -546,9 +546,9 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(962, 603)
         Me.Controls.Add(Me.Bilan)
         Me.Controls.Add(Label1)
-        Me.Controls.Add(Me.Supprimer)
-        Me.Controls.Add(Me.Annuler)
-        Me.Controls.Add(Me.Liste)
+        Me.Controls.Add(Me.BtnSupprimerLégumeListe)
+        Me.Controls.Add(Me.BtnAnnulerAjout)
+        Me.Controls.Add(Me.CmbListe)
         Me.Controls.Add(AnnéeLabel)
         Me.Controls.Add(Me.AnnéeComboBox)
         Me.Controls.Add(Me.Année)
@@ -556,12 +556,12 @@ Partial Class Form1
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(ObservationsLabel)
         Me.Controls.Add(Me.ObservationsRichTextBox)
-        Me.Controls.Add(Me.Modifier)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.BtnModifier)
+        Me.Controls.Add(Me.LblNomLégume)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.CmbChoixLégume)
         Me.Controls.Add(IdLabel)
         Me.Controls.Add(Me.IdTextBox)
         Me.Controls.Add(Me.NomTextBox)
@@ -598,9 +598,9 @@ Partial Class Form1
     Friend WithEvents LégumesTableAdapter As Mon_jardin.JardinDataSetTableAdapters.LégumesTableAdapter
     Friend WithEvents TableAdapterManager As Mon_jardin.JardinDataSetTableAdapters.TableAdapterManager
     Friend WithEvents LégumesBindingNavigator As System.Windows.Forms.BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnAjouterLégume As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnSupprimerLégume As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
@@ -609,7 +609,7 @@ Partial Class Form1
     Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents LégumesBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnEnregistrerLégume As System.Windows.Forms.ToolStripButton
     Friend WithEvents IdTextBox As System.Windows.Forms.TextBox
     Friend WithEvents NomTextBox As System.Windows.Forms.TextBox
     Friend WithEvents PhotoPictureBox As System.Windows.Forms.PictureBox
@@ -618,20 +618,20 @@ Partial Class Form1
     Friend WithEvents Date_repiquageDateTimePicker As System.Windows.Forms.DateTimePicker
     Friend WithEvents QuantitéNumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents Date_récolteDateTimePicker As System.Windows.Forms.DateTimePicker
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents CmbChoixLégume As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Modifier As System.Windows.Forms.Button
+    Friend WithEvents LblNomLégume As System.Windows.Forms.Label
+    Friend WithEvents BtnPhoto As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnModifier As System.Windows.Forms.Button
     Friend WithEvents ObservationsRichTextBox As System.Windows.Forms.RichTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Année As System.Windows.Forms.ComboBox
     Friend WithEvents AnnéeComboBox As System.Windows.Forms.ComboBox
-    Friend WithEvents Liste As System.Windows.Forms.ComboBox
-    Friend WithEvents Annuler As System.Windows.Forms.Button
-    Friend WithEvents Supprimer As System.Windows.Forms.Button
+    Friend WithEvents CmbListe As System.Windows.Forms.ComboBox
+    Friend WithEvents BtnAnnulerAjout As System.Windows.Forms.Button
+    Friend WithEvents BtnSupprimerLégumeListe As System.Windows.Forms.Button
     Friend WithEvents Bilan As System.Windows.Forms.Button
 End Class
