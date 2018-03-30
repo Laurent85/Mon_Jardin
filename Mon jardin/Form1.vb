@@ -3,7 +3,6 @@
 Public Class Form1
 
     Private Sub OuvertureLogiciel(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: cette ligne de code charge les données dans la table 'JardinDataSet.Légumes'. Vous pouvez la déplacer ou la supprimer selon vos besoins.
         Année.SelectedItem = Date.Today.Year.ToString
         FctTriAnnée()
         NomTextBox.Visible = False
@@ -46,7 +45,6 @@ Public Class Form1
 
             If .ShowDialog = DialogResult.OK Then
 
-                ' Load the specified file into a PictureBox control.
                 PhotoPictureBox.Image = Image.FromFile(.FileName)
 
             End If
@@ -142,7 +140,6 @@ Public Class Form1
 
     Private Sub BtnBilan(sender As Object, e As EventArgs) Handles Bilan.Click
         Form2.Show()
-
     End Sub
 
     Private Sub CmbChoixAnnée(sender As Object, e As EventArgs) Handles Année.SelectedIndexChanged
@@ -161,19 +158,14 @@ Public Class Form1
             BtnEnregistrerLégume.Enabled = True
             BtnPhoto.Enabled = True
         End If
-
     End Sub
 
     Private Sub CmbDateSemis(sender As Object, e As EventArgs) Handles Date_semisDateTimePicker.ValueChanged
         TextBox1.Text = Date_semisDateTimePicker.Text
-        REM If TextBox2.Text = "" Then
-        REM    TextBox2.Text = Date_semisDateTimePicker.Value.AddDays(25).ToString("dddd dd MMMM yyyy", CultureInfo.CreateSpecificCulture("fr-FR"))
-        REM End If
     End Sub
 
     Private Sub CmbDateRepiquage(sender As Object, e As EventArgs) Handles Date_repiquageDateTimePicker.ValueChanged
         TextBox2.Text = Date_repiquageDateTimePicker.Text
-        REM Label4.Text = Date_repiquageDateTimePicker.Value.AddDays(25).ToString()
     End Sub
 
     Private Sub CmbDateRécolte(sender As Object, e As EventArgs) Handles Date_récolteDateTimePicker.ValueChanged
