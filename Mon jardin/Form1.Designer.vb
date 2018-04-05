@@ -32,8 +32,6 @@ Partial Class Form1
         Dim AnnéeLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.LégumesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.JardinDataSet = New Mon_jardin.JardinDataSet()
         Me.LégumesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BtnAjouterLégume = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -65,14 +63,16 @@ Partial Class Form1
         Me.ObservationsRichTextBox = New System.Windows.Forms.RichTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.LégumesTableAdapter = New Mon_jardin.JardinDataSetTableAdapters.LégumesTableAdapter()
-        Me.TableAdapterManager = New Mon_jardin.JardinDataSetTableAdapters.TableAdapterManager()
         Me.Année = New System.Windows.Forms.ComboBox()
         Me.AnnéeComboBox = New System.Windows.Forms.ComboBox()
         Me.CmbListe = New System.Windows.Forms.ComboBox()
         Me.BtnAnnulerAjout = New System.Windows.Forms.Button()
         Me.BtnSupprimerLégumeListe = New System.Windows.Forms.Button()
         Me.Bilan = New System.Windows.Forms.Button()
+        Me.LégumesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.JardinDataSet = New Mon_jardin.JardinDataSet()
+        Me.LégumesTableAdapter = New Mon_jardin.JardinDataSetTableAdapters.LégumesTableAdapter()
+        Me.TableAdapterManager = New Mon_jardin.JardinDataSetTableAdapters.TableAdapterManager()
         IdLabel = New System.Windows.Forms.Label()
         Date_semisLabel = New System.Windows.Forms.Label()
         Date_repiquageLabel = New System.Windows.Forms.Label()
@@ -81,12 +81,12 @@ Partial Class Form1
         ObservationsLabel = New System.Windows.Forms.Label()
         AnnéeLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
-        CType(Me.LégumesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.JardinDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LégumesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LégumesBindingNavigator.SuspendLayout()
         CType(Me.PhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QuantitéNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LégumesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.JardinDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IdLabel
@@ -168,16 +168,6 @@ Partial Class Form1
         Label1.Size = New System.Drawing.Size(70, 13)
         Label1.TabIndex = 36
         Label1.Text = "Choix Année:"
-        '
-        'LégumesBindingSource
-        '
-        Me.LégumesBindingSource.DataMember = "Légumes"
-        Me.LégumesBindingSource.DataSource = Me.JardinDataSet
-        '
-        'JardinDataSet
-        '
-        Me.JardinDataSet.DataSetName = "JardinDataSet"
-        Me.JardinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'LégumesBindingNavigator
         '
@@ -470,16 +460,6 @@ Partial Class Form1
         Me.TextBox4.Size = New System.Drawing.Size(348, 25)
         Me.TextBox4.TabIndex = 27
         '
-        'LégumesTableAdapter
-        '
-        Me.LégumesTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.LégumesTableAdapter = Me.LégumesTableAdapter
-        Me.TableAdapterManager.UpdateOrder = Mon_jardin.JardinDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'Année
         '
         Me.Année.BackColor = System.Drawing.Color.AliceBlue
@@ -506,7 +486,6 @@ Partial Class Form1
         '
         Me.CmbListe.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.CmbListe.FormattingEnabled = True
-        Me.CmbListe.Items.AddRange(New Object() {"Ail", "Basilic", "Betterave", "Brocoli", "Carotte", "Celeri", "Chou Fleur", "Ciboulette", "Concombre", "Courgette", "Echalotte", "Epinard", "Estragon", "Fraise", "Haricot Blanc", "Laitue", "Mache", "Melon", "Navet", "Oignon", "Patate", "Persil", "Petit Pois", "Poireau", "Poivron", "Radis", "Tomate", "Tomate cerise"})
         Me.CmbListe.Location = New System.Drawing.Point(128, 113)
         Me.CmbListe.Name = "CmbListe"
         Me.CmbListe.Size = New System.Drawing.Size(200, 21)
@@ -538,6 +517,26 @@ Partial Class Form1
         Me.Bilan.TabIndex = 37
         Me.Bilan.Text = "Bilan"
         Me.Bilan.UseVisualStyleBackColor = True
+        '
+        'LégumesBindingSource
+        '
+        Me.LégumesBindingSource.DataMember = "Légumes"
+        Me.LégumesBindingSource.DataSource = Me.JardinDataSet
+        '
+        'JardinDataSet
+        '
+        Me.JardinDataSet.DataSetName = "JardinDataSet"
+        Me.JardinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'LégumesTableAdapter
+        '
+        Me.LégumesTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.LégumesTableAdapter = Me.LégumesTableAdapter
+        Me.TableAdapterManager.UpdateOrder = Mon_jardin.JardinDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'Form1
         '
@@ -581,14 +580,14 @@ Partial Class Form1
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Mon jardin"
-        CType(Me.LégumesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.JardinDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Mon jardin v1.09"
         CType(Me.LégumesBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LégumesBindingNavigator.ResumeLayout(False)
         Me.LégumesBindingNavigator.PerformLayout()
         CType(Me.PhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QuantitéNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LégumesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.JardinDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -4,7 +4,7 @@ Public Class Form1
 
     Private Sub OuvertureLogiciel(sender As Object, e As EventArgs) Handles MyBase.Load
         Année.SelectedItem = Date.Today.Year.ToString
-        FctTriAnnée()
+
         NomTextBox.Visible = False
         CmbListe.Visible = False
         LblNomLégume.Visible = False
@@ -12,6 +12,23 @@ Public Class Form1
         BtnAnnulerAjout.Visible = False
         BtnSupprimerLégumeListe.Visible = False
         CmbListe.Sorted = True
+        LégumesTableAdapter.Fill(JardinDataSet.Légumes)
+        For Each dr As DataRow In JardinDataSet.Légumes
+
+            CmbListe.Items.Add(dr("Nom").ToString)
+
+        Next dr
+
+        For i = CmbListe.Items.Count - 1 To 0 Step -1
+            For a = CmbListe.Items.Count - 1 To i + 1 Step -1
+                If CmbListe.Items(i) = CmbListe.Items(a) Then
+                    CmbListe.Items.RemoveAt(a)
+                    Exit For
+                End If
+            Next a
+        Next i
+
+        FctTriAnnée()
     End Sub
 
     Private Sub BtnAjouter(sender As Object, e As EventArgs) Handles BtnAjouterLégume.Click

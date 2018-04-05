@@ -7,8 +7,8 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_PATH_VALIDATION_OPT" Value="2"/>
     <ROW Property="AI_PRODUCTNAME_ARP" Value="[|ProductName] V[|ProductVersion]"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Monjardin.exe" Value="..\Mon jardin\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Monjardin.exe.config" Value="..\Mon jardin\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Monjardin.exe" Value="..\Mon jardin\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Monjardin.exe.config" Value="..\Mon jardin\bin\Debug"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Monjardin.exe" Value="Mon jardin.exe"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Monjardin.exe.config" Value="Mon jardin.exe.config"/>
     <ROW Property="AI_ThemeStyle" Value="default" MultiBuildValue="DefaultBuild:style2blue" MsiKey="AI_ThemeStyle"/>
@@ -19,10 +19,10 @@
     <ROW Property="ARPPRODUCTICON" Value="AI_PROPPATH_FILENAME_PERBUILD_Monjardin.exe" Type="8"/>
     <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
     <ROW Property="Manufacturer" Value="Laurent Manceau"/>
-    <ROW Property="ProductCode" Value="1033:{76BAAFD7-8C13-48E8-A00B-8D29B04C5D46} 1036:{9D15FA8C-99D0-4CCF-8CBD-D029500746C2} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{08BBFF0A-5B7F-4391-A57D-535597CA93FD} 1036:{99C82DD6-BD82-4058-9D28-D25BD8CB5D1F} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Mon Jardin"/>
-    <ROW Property="ProductVersion" Value="1.0.8" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.9" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{36592624-1DDF-48C5-96DB-1B1697C67511}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
